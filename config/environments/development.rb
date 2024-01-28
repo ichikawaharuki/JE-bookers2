@@ -76,4 +76,17 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.active_job.queue_adapter = :inline
   config.hosts.clear
+  
+  config.action_mailer.default_url_options = { host: '49e69874be6d4ef3a0718e9b15430b98.vfs.cloud9.us-east-1.amazonaws.com' }#cloud9を開発環境にしている場合のhost例
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   address:              'smtp.gmail.com',
+   port:                  587,
+   domain:               'gmail.com',
+   user_name:            'ichikawa.haruki.infratop@gmail.com', #先ほど設定したgmailアドレス
+   password:             'cxeyoiteoptjqcpb' ,  #2段階認証したアカウントで発行したアプリパスワード
+   authentication:       'plain',
+   enable_starttls_auto:  true
+  }
 end
