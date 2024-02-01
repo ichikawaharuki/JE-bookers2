@@ -4,10 +4,15 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @tags = @book.tag_counts_on(:tags)
   end
 
   def index
+   if params[:tag]
+    @books = Book.tagged_with(params[:tag])
+   else
     @books = Book.all
+   end
     @book = Book.new
   end
 
@@ -41,7 +46,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :tag_list)
   end
 
   def ensure_correct_user
