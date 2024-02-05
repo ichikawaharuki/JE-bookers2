@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).order(age: :asc) # 年齢順にソート
     @book = Book.new
   end
 
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :age, :gender)
   end
 
   def ensure_correct_user

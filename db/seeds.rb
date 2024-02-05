@@ -6,7 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(
- name: "test",
- email: "a@a",
- password: "aaaaaa"
- )
+  [
+    {
+      name: "test",
+      email: "a@a",
+      password: "aaaaaa",
+      age: 10,  # 文字列ではなく整数に修正
+      gender: "Male"
+    },
+    {
+      name: "test2",
+      email: "b@b",
+      password: "aaaaaa",
+      age: 20,  # 文字列ではなく整数に修正
+      gender: "Female"
+    }
+  ]
+)
