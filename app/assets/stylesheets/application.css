@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+.slider {
+  display: flex;
+  flex-wrap: nowrap; /* 横に並べ、折り返しを防止 */
+  overflow: hidden; /* スライドの範囲をはみ出さないように */
+}
+
+.slider-item {
+  flex: 0 0 auto; /* 伸びないように設定 */
+  margin-right: 10px; /* スライド間の間隔を調整 */
+}

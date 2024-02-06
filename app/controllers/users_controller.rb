@@ -3,10 +3,16 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
+  if params[:id] == "sign_out"
+    # ログアウトの処理を行う（User.findは不要）
+    sign_out(current_user)
+    redirect_to root_path, notice: "ログアウトしました"
+  else
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
   end
+end
 
   def index
     @users = User.all
